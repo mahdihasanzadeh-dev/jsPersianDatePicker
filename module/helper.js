@@ -49,6 +49,71 @@ export default {
             }
             return 29
         }
+    },
+    isLeapYear(year){
+        const result = Number(year)%33
+            if(result==1|| result==5||  result==9|| result== 13 || result== 17|| result==22|| result== 26|| result==30 ){
+                return true
+            }
+            return false
     }
+    ,
+    numberPastOfWeek(day){
+        switch (day) {
+            case 'جمعه':
+                return 6;
+                break;
+            case 'پنجشنبه':
+                return 5;
+                break
+            case 'چهارشنبه':
+                return 4
+                break;
+        
+            case 'سه‌شنبه':
+                return 3
+                break;
+            case 'دوشنبه':
+                return 2
+                break;
+            case 'یکشنبه':
+                return 1
+                break;
+            case 'شنبه':
+                return 0;
+                break
+            default:
+                break;
+        }
+    },
+    numberLastOverOfWeek(day){
+        switch (day) {
+            case 'جمعه':
+                return 0;
+                break;
+            case 'پنجشنبه':
+                return 1;
+                break
+            case 'چهارشنبه':
+                return 2
+                break;
+        
+            case 'سه‌شنبه':
+                return 3
+                break;
+            case 'دوشنبه':
+                return 4
+                break;
+            case 'یکشنبه':
+                return 5
+                break;
+            case 'شنبه':
+                return 6;
+                break
+            default:
+                break;
+        }
+    },
+
       
 }

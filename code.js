@@ -1,5 +1,5 @@
 import helper from './module/helper.js'
-const{checkEventPathForClass,p2e,jalali_to_gregorian,calculateMonthsDays} = helper
+const{checkEventPathForClass,p2e,jalali_to_gregorian,calculateMonthsDays,numberPastOfWeek,numberLastOverOfWeek,isLeapYear} = helper
 //selectors
 const date_picker_element = document.querySelector('.date-picker');
 const selected_date_element = document.querySelector('.selected-date');
@@ -14,8 +14,9 @@ const days_element = document.querySelector('.date-picker .days')
 
 const months = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند']
 const date = new Date().toLocaleDateString('fa-IR')
-const  day = new Date().toLocaleDateString('fa-IR',{ day: '2-digit' })
-const month =p2e( new Date().toLocaleDateString('fa-IR',{month: 'long' }))
+const  day = p2e(new Date().toLocaleDateString('fa-IR',{ day: '2-digit' }))
+const month = p2e( new Date().toLocaleDateString('fa-IR',{month: 'long' }))
+const weekday = p2e( new Date().toLocaleDateString('fa-IR',{weekday: 'long' }))
 let monthNumber = p2e(new Date().toLocaleDateString('fa-IR',{month: 'numeric' }))
 let  year = p2e(new Date().toLocaleDateString('fa-IR',{ year: 'numeric' }))
 
@@ -72,7 +73,35 @@ function populateDates(e){
 
     let amount_days = 31;
     amount_days = calculateMonthsDays(monthNumber,year)
+
+  
+     
+    let numberDaysOfMonth = calculateMonthsDays(monthNumber,year)
     
+
+
+    const firstDate = new Date(jalali_to_gregorian(Number(year),Number(monthNumber),Number(1)));
+    const firstWeekDay = firstDate.toLocaleDateString('fa-IR',{weekday:'long'})
+    const pastDays = numberPastOfWeek(firstWeekDay)
+    let counterPast =(numberDaysOfMonth -pastDays)
+    if(isLeapYear(year -1)&&monthNumber==12 ||monthNumber==7)
+    counterPast+=1;
+    if(isLeapYear(year -1)&&monthNumber==1 )
+    counterPast-=1;
+    if(!isLeapYear(year -1)&&monthNumber==1)
+    counterPast-=2;
+    for(let i=0;i<pastDays;i++){
+        counterPast++;
+        const day_element = document.createElement('div')
+        day_element.classList.add('day')
+        day_element.textContent = counterPast;
+        day_element.classList.add('disabled')
+        days_element.appendChild(day_element)
+        
+    }
+
+
+
     for(let i=0;i<amount_days;i++){
         const day_element = document.createElement('div')
         day_element.classList.add('day')
@@ -95,6 +124,20 @@ function populateDates(e){
             populateDates()
         })
         days_element.appendChild(day_element)
+    }
+
+    const lastDate = new Date(jalali_to_gregorian(Number(year),Number(monthNumber),Number(numberDaysOfMonth)));
+    const lastWeekDay = lastDate.toLocaleDateString('fa-IR',{weekday:'long'})
+    const lastOverDays = numberLastOverOfWeek(lastWeekDay)
+  
+  
+    for(let i=0;i<lastOverDays;i++){
+        const day_element = document.createElement('div')
+        day_element.classList.add('day')
+        day_element.textContent = i+1;
+        day_element.classList.add('disabled')
+        days_element.appendChild(day_element)
+       
     }
 }
 
