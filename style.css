@@ -1,7 +1,4 @@
-@font-face{
-    font-family: 'IRANSans';
-    src : local('IRANSans'),url(../IRANSans.ttf) format('truetype')
-  }
+
 * {
 	margin: 0;
 	padding: 0;
@@ -10,131 +7,10 @@
 
 body {
 	background-color: #FFCE00;
-    font-family: IRANSans;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column;
+	width: 100vw;
    
-}
-
-h1 {
-	margin: 30px 0px;
-	color: #313131;
-	font-size: 42px;
-	font-weight: 900;
-	text-align: center;
-}
-
-h1 span {
-	font-weight: 300;
-}
-
-.date-picker {
-	position: relative;
-    width: 100%;
-    max-width: 560px;
-    height: 60px;
-    background-color: #FFF;
-    margin: 30px auto;
-    box-shadow: 0px 3px 10px rgb(0 0 0 / 20%);
-    cursor: pointer;
-    user-select: none;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.date-picker:hover {
-	background-color: #F3F3F3;
-}
-
-.date-picker .selected-date {
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	color: #313131;
-	font-size: 28px;
-}
-
-.date-picker .dates {
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	right: 0;
-
-	background-color: #FFF;
-}
-
-.date-picker .dates.active {
-	display: block;
-}
-
-.date-picker .dates .month {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: 2px solid #EEE;
-	
-}
-
-.date-picker .dates .month .arrows {
-	width: 35px;
-	height: 35px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #313131;
-	font-size: 20px;
-}
-
-.date-picker .dates .month .arrows:hover {
-	background-color: #F3F3F3;
-}
-
-.date-picker .dates .month .arrows:active {
-	background-color: #00CA85;
-}
-
-.date-picker .dates .days {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	height: 200px;
-}
-.date-picker .dates .days .day { 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #313131;
-}
-.date-picker .dates .days .day.selected {
-	background-color: #00CA85;
-}
-.date-picker .dates .days .day.disabled {
-color: #c4c4c4;
-opacity: 0.8;
-}
-.name-days-week{
-	display: grid;
-    grid-template-columns: repeat(7, 1fr);
-}
-.name-days-week span{
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    padding: 9px;
-}
-
-@media only screen and (max-width: 600px) {
-	.name-days-week span{
-		font-size: 12px;
-		padding: 2px;
-	}
 }
