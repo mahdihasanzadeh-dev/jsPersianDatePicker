@@ -14,7 +14,8 @@ jsPersianDatepicker is A lightweight javascript component that select persian(ja
 ```
  <br />
 3.for get date selected
+<br />
 ```javascript
-    const picker  = document.querySelector('persian-date-picker')
-    console.log(picker.getAttribute('value'))
- ```
+    const picker  = document.querySelector('persian-date-picker');
+    console.log(picker.getAttribute('value'));
+```
